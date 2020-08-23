@@ -1,0 +1,40 @@
+#include "main.hpp"
+
+int ADC::Init(void){
+  
+  SET_BIT(RCC->APB2ENR, RCC_APB2ENR_IOPAEN);
+  //mod in and andlog
+  CLEAR_BIT(GPIOA->CRL, GPIO_CRL_MODE_0 | GPIO_CRL_MODE_1 | GPIO_CRL_MODE_2 | GPIO_CRL_MODE_3);
+  CLEAR_BIT(GPIOA->CRL, GPIO_CRL_CNF_0 | GPIO_CRL_CNF_1 | GPIO_CRL_CNF_2 | GPIO_CRL_CNF_3);
+  //12MGhz and ADC en
+  SET_BIT(RCC->CFGR, RCC_CFGR_ADCPRE_DIV6);
+  SET_BIT(RCC->APB2ENR, RCC_APB2ENR_ADC1EN);
+  
+  SET_BIT(ADC1->CR2, ADC_CR2_CAL); 
+  while (!READ_BIT(ADC1->CR2, ADC_CR2_CAL))
+  
+  //7.5 cycles
+  SET_BIT(ADC1->SMPR2, ADC_SMPR2_SMP0_0 | ADC_SMPR2_SMP1_0
+          | ADC_SMPR2_SMP2_0 | ADC_SMPR2_SMP3_0);
+  
+  NVIC_EnableIRQ(ADC1_IRQn);
+  SET_BIT(ADC1->CR1, ADC_CR1_JEOCIE);
+  //jswstart
+  SET_BIT(ADC1->CR2, ADC_CR2_JEXTSEL);
+  
+  SET_BIT(ADC1->CR2, ADC_CR2_ADON);
+     
+}
+
+int ADC::ChanelSet(uint32_t){
+  SET_BIT(ADC1->JSQR, ADC1_JSQR_);
+}
+void ADC::ADC(){
+  
+}
+
+void ADC::~ADC(){
+  
+}
+
+          

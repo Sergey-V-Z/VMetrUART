@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "D:\Radio\new Job\myProject\settings\myPrj.Debug.general.xcl" --backend -f "D:\Radio\new Job\myProject\settings\myPrj.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "D:\Radio\new Job\myProject\settings\myPrj.Release.general.xcl" --backend -f "D:\Radio\new Job\myProject\settings\myPrj.Release.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "D:\Radio\new Job\myProject\settings\myPrj.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Radio\new Job\myProject\settings\myPrj.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "D:\Radio\new Job\myProject\settings\myPrj.Release.general.xcl" --debug_file=$debugfile --backend -f "D:\Radio\new Job\myProject\settings\myPrj.Release.driver.xcl" 
 }
